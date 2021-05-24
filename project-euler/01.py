@@ -3,11 +3,20 @@
 # The sum of these multiples is 23.
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
-sum = 0
+import sys
 
-for i in range(1000):
-    if i % 3 == 0 or i % 5 == 0:
-        sum = sum + i
+def is_multiple(a, b):
+    return a % b == 0
 
-print(sum)
+def sum_multiples(max):
+    sum = 0
 
+    for i in range(max):
+        if is_multiple(i, 3) or is_multiple(i, 5):
+            sum = sum + i
+    
+    return sum
+
+max_str = sys.argv[1]
+max = int(max_str)
+print(sum_multiples(max))
