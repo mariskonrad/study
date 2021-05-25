@@ -9,6 +9,7 @@ def is_multiple(a, b):
     return a % b == 0
 
 def sum_multiples(max):
+   
     sum = 0
 
     for i in range(max):
