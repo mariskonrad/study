@@ -1,12 +1,26 @@
 # create a program that receives a list of numbers and outputs the greater
 
-def find_greater_num(list):
-    return max(list)
+def greater_num(list_of_nums):
+    # ''' 
+    # list -> int
 
-find_greater_num(1 2 3 4 5 6)
-print(find_greater_num)
+    # Outputs the greater number in a list.
 
-# list = [1, 5, 9, 18, 21, 13]
-# max(list)
+    # >>> greater_num([1, 9, 94, 35, 26, 87])
+    # 87
 
-# print(max(list))
+    # >>> greater_num([12, 7, 23, 15, 9, 76])
+    # 76
+    # '''
+ 
+    maximum = list_of_nums[0]
+    for n in list_of_nums:
+        if maximum < n:
+            maximum = n
+
+    
+    return maximum
+
+result = greater_num([1, 9, 94, 35, 26, 87])
+print(result)
+
