@@ -8,5 +8,5 @@ num = 0
 s = 0
 while num < end:
     num += 1
-    s = s + num
+    s += num
 print(s)
