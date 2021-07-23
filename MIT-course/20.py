@@ -5,4 +5,3 @@ def how_many(aDict):
     for key in aDict:
         result += len(aDict[key])
     return result
-    
