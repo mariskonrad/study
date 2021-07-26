@@ -137,7 +137,9 @@ def playGame(wordList):
         if user_input == "r":
             if storedHand == {}:
                 print("You have not played a hand yet. Please play a new hand first!")
-                continue
+            else:
+                playHand(storedHand, wordList, HAND_SIZE)
+
         else:
             whoPlays = input("Enter u to have yourself play, c to have the computer play: ")
             if whoPlays != "c" and whoPlays != "u":
