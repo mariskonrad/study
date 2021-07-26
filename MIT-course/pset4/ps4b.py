@@ -129,35 +129,27 @@ def playGame(wordList):
     storedHand = {}
     while True:
         user_input = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if user_input != "n" and user_input != "r" and user_input != "e":
+            print("Invalid command.")
+            user_input = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
         if user_input == "e":
             return
-        if user_input == "n":
-            who_plays = input("Enter u to have yourself play, c to have the computer play: ")
-            if who_plays == "c":
+        if user_input == "r":
+            if storedHand == {}:
+                print("You have not played a hand yet. Please play a new hand first!")
+                continue
+        else:
+            whoPlays = input("Enter u to have yourself play, c to have the computer play: ")
+            if whoPlays != "c" and whoPlays != "u":
+                print("Invalid command.")
+            elif whoPlays == "c":
                 compPlayHand(storedHand, wordList, HAND_SIZE)
-            elif who_plays == "u":
+            elif whoPlays == "u":
                 storedHand = dealHand(HAND_SIZE)
                 playHand(storedHand, wordList, HAND_SIZE)
-            elif who_plays != "c" and who_plays != "u":
-                print("Invalid command.")
-        if user_input == "r":
-            who_plays = input("Enter u to have yourself play, c to have the computer play: ")
-            if who_plays == "c":
-                if storedHand == {}:
-                    print("You have not played a hand yet. Please play a new hand first!")
-                else:
-                    compPlayHand(storedHand, wordList, HAND_SIZE)
-            elif who_plays == "u":
-                if storedHand == {}:
-                    print("You have not played a hand yet. Please play a new hand first!")
-            elif who_plays != "c" and who_plays != "u":
-                print("Invalid command.")
-        if user_input != "e" and user_input != "n" and user_input != "r":
-            print("Invalid command.")
-        # else:
-        #     playHand(storedHand, wordList, HAND_SIZE)
 
-#
+
+
 # Build data structures used for entire session and play game
 #
 if __name__ == '__main__':
