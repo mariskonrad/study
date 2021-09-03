@@ -19,7 +19,17 @@ while True:
     else:
         if resp == 1:
             nome = input("Qual seu nome? ")
-            nota = float(input("Digite sua nota: "))
+            # garantir que o usuário digite apenas letras
+            while not nome.isalpha():
+                print("Digite apenas letras.")
+                nome = input("Qual seu nome? ")
+            # garantir que o usuário digite apenas números e tratar erro
+            try:
+                nota = float(input("Digite sua nota: "))
+            except ValueError:
+                print("Digite apenas números.")
+                nota = float(input("Digite sua nota: "))
+
             conceito = ''
             if nota >= 0 and nota <= 2.9:
                 conceito = 'E'
@@ -33,4 +43,4 @@ while True:
                 conceito = 'A'
             print("O(a) aluno(a) {} tirou nota {} e se enquadra no conceito {}." .format(nome, nota, conceito))
 
-# verificar o NameError
+
