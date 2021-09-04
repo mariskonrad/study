@@ -5,35 +5,35 @@ while True:
     # checa se dígitos inseridos são válidos
     resp = ''
     while True:
-        resp = input("Inserir dados no programa? (S)im / (N)ão: ")
+        resp = input('Inserir dados no programa? (S)im / (N)ão: ')
         resp = resp.lower()
         if resp == 's' or resp == 'n':
             break
 
     # encerra o programa
     if resp == 'n':
-        print("Encerrando o programa...")
+        print('Encerrando o programa...')
         break
 
     else:
         # garantir que o usuário digite apenas letras
         nome = ""
         while True:
-            nome = input("Qual seu nome? ")
+            nome = input('Qual seu nome? ')
             if nome.isalpha():
                 break
-            print("Digite apenas letras.")
+            print('Digite apenas letras.')
 
         # pedir input para nota garantindo que o usuário digite apenas números e tratar erro
         nota = 0
         while True:
             try:
-                nota = float(input("Digite sua nota: "))
+                nota = float(input('Digite sua nota: '))
                 if nota >= 0 and nota <= 10:
                     break
-                print("Digite apenas números de 0 a 10.")
+                print('Digite apenas números de 0 a 10.')
             except:
-                print("Digite um número válido.")
+                print('Digite um número válido.')
                 continue
 
         conceito = ''
@@ -48,6 +48,6 @@ while True:
         elif nota >= 9 and nota <= 10:
             conceito = 'A'
 
-        print("O(a) aluno(a) {} tirou nota {} e se enquadra no conceito {}." .format(nome, nota, conceito))
+        print('O(a) aluno(a) {} tirou nota {} e se enquadra no conceito {}.' .format(nome, nota, conceito))
 
 
