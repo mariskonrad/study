@@ -1,46 +1,53 @@
 # Perguntar se o usuário deseja inserir dados
 # checa se o input é um número
 while True:
-    try:
-        resp = int(input("Inserir dados no programa? 0 - Não   1 - Sim "))
-    except ValueError:
-        print('Dígito inválido. Por favor, insira 0 para "Não" e 1 para "Sim": ')
 
     # checa se dígitos inseridos são válidos
-    while resp != 0 and resp != 1:
-        print("Dígitos inválidos.")
-        resp = int(input("Inserir dados no programa? 0 - Não   1 - Sim "))
+    resp = ''
+    while True:
+        resp = input("Inserir dados no programa? (S)im / (N)ão: ")
+        resp = resp.lower()
+        if resp == 's' or resp == 'n':
+            break
 
     # encerra o programa
-    if resp == 0:
+    if resp == 'n':
         print("Encerrando o programa...")
         break
 
     else:
-        if resp == 1:
+        # garantir que o usuário digite apenas letras
+        nome = ""
+        while True:
             nome = input("Qual seu nome? ")
-            # garantir que o usuário digite apenas letras
-            while not nome.isalpha():
-                print("Digite apenas letras.")
-                nome = input("Qual seu nome? ")
-            # garantir que o usuário digite apenas números e tratar erro
+            if nome.isalpha():
+                break
+            print("Digite apenas letras.")
+
+        # pedir input para nota garantindo que o usuário digite apenas números e tratar erro
+        nota = 0
+        while True:
             try:
                 nota = float(input("Digite sua nota: "))
-            except ValueError:
-                print("Digite apenas números.")
-                nota = float(input("Digite sua nota: "))
+                if nota >= 0 and nota <= 10:
+                    break
+                print("Digite apenas números de 0 a 10.")
+            except:
+                print("Digite um número válido.")
+                continue
 
-            conceito = ''
-            if nota >= 0 and nota <= 2.9:
-                conceito = 'E'
-            elif nota >= 3 and nota <= 4.9:
-                conceito = 'D'
-            elif nota >= 5 and nota <= 6.9:
-                conceito = 'C'
-            elif nota >= 7 and nota <= 8.9:
-                conceito = 'B'
-            elif nota >= 9 and nota <= 10:
-                conceito = 'A'
-            print("O(a) aluno(a) {} tirou nota {} e se enquadra no conceito {}." .format(nome, nota, conceito))
+        conceito = ''
+        if nota >= 0 and nota <= 2.9:
+            conceito = 'E'
+        elif nota >= 3 and nota <= 4.9:
+            conceito = 'D'
+        elif nota >= 5 and nota <= 6.9:
+            conceito = 'C'
+        elif nota >= 7 and nota <= 8.9:
+            conceito = 'B'
+        elif nota >= 9 and nota <= 10:
+            conceito = 'A'
+
+        print("O(a) aluno(a) {} tirou nota {} e se enquadra no conceito {}." .format(nome, nota, conceito))
 
 
