@@ -21,8 +21,10 @@ def get_valor():
 def main():
     # Programa principal
     lista_sorteio = []
+    inserir = ''
     while True:
-        inserir = input('Deseja cadastrar um nome na lista? (S)im / (N)ão ')
+        while (not inserir.isalpha()): # garantir que o input sejam letras
+            inserir = input('Deseja cadastrar um nome na lista? (S)im / (N)ão ')
         inserir = inserir.lower()
         if inserir == 'n':
             break
@@ -33,8 +35,10 @@ def main():
         lista_sorteio += [nome] * vezes_lista
         print(lista_sorteio)
 
+    sortear = ''
     while True:
-        sortear = input('Deseja realizar o sorteio? (S)im / (N)ão ')
+        while not sortear.isalpha():
+            sortear = input('Deseja realizar o sorteio? (S)im / (N)ão ')
         sortear = sortear.lower()
         if sortear == 'n':
             return
