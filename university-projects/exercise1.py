@@ -24,7 +24,7 @@ while True:
                 break
             print('Digite apenas letras.')
 
-        # pedir input para nota garantindo que o usuário digite apenas números e tratar erro
+        # pedir input para nota garantindo que o usuário digite apenas números válidos e tratar erro
         nota = 0
         while True:
             try:
