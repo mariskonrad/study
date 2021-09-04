@@ -17,35 +17,43 @@ def get_valor():
         except:
             print('Dígitos inválidos. Digite apenas números.')
 
-# Função que armazena os nomes dos doadores e realiza o sorteio
-def main():
-    # Programa principal
-    lista_sorteio = []
-    inserir = ''
+# Função padronizada para perguntas ao usuário com resposta (S)im ou (N)ão.
+def get_sim_ou_nao(prompt):
     while True:
-        while (not inserir.isalpha()): # garantir que o input sejam letras
-            inserir = input('Deseja cadastrar um nome na lista? (S)im / (N)ão ')
-        inserir = inserir.lower()
+        opcao = input('{} (S)im ou (N)ão: ' .format(prompt))
+        opcao = opcao.lower() # converte o input do usuário para letras minúsculas
+        if opcao != 's' and opcao != 'n':
+           print('Dígitos inválidos.')
+           continue
+        return opcao
+
+def inserir_nome_na_lista():
+    lista_sorteio = []
+    while True:
+        inserir = get_sim_ou_nao('Deseja cadastrar um nome na lista?')
         if inserir == 'n':
-            break
+            return lista_sorteio
         nome = get_nome()
         valor = get_valor()
         print('{} doou R$ {}' .format(nome, valor))
         vezes_lista = int(valor) // 10
         lista_sorteio += [nome] * vezes_lista
-        print(lista_sorteio)
+        print('Os nomes na lista são {}.' .format(lista_sorteio))
 
-    sortear = ''
-    while True:
-        while not sortear.isalpha():
-            sortear = input('Deseja realizar o sorteio? (S)im / (N)ão ')
-        sortear = sortear.lower()
-        if sortear == 'n':
-            return
-        random.shuffle(lista_sorteio)
-        sorteado = random.choice(lista_sorteio)
-        print('O sorteado foi {}' .format(sorteado))
-        return sorteado
+def sortear_nome():
+    lista_sorteio = inserir_nome_na_lista()
+    if len(lista_sorteio) == 0:
+        return
+    print("Realizando o sorteio...")
+    random.shuffle(lista_sorteio)
+    sorteado = random.choice(lista_sorteio)
+    print('O sorteado foi {}' .format(sorteado))
+    return sorteado
+
+def main():
+    # Programa principal
+    sortear_nome()
+
 
 
 
