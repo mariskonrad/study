@@ -1,7 +1,4 @@
-# Perguntar se o usuário deseja inserir dados
-# checa se o input é um número
 while True:
-
     # checa se dígitos inseridos são válidos
     resp = ''
     while True:
@@ -36,6 +33,7 @@ while True:
                 print('Digite um número válido.')
                 continue
 
+        # atribuir o conceito ao valor recebido pelo usuário
         conceito = ''
         if nota >= 0 and nota <= 2.9:
             conceito = 'E'
