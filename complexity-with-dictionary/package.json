@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@stdlib/datasets-moby-dick": "^0.2.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
